@@ -19,6 +19,7 @@
  */
 
 import type { EditorPlugin, EditorPluginContext } from '@cesdk/cesdk-js';
+import CreativeEditorSDK from '@cesdk/cesdk-js';
 
 import { setupActions } from './actions';
 import { setupFeatures } from './features';

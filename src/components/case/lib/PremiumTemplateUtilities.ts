@@ -100,10 +100,14 @@ export async function addFloralStickersAssetSource(
   cesdk: CreativeEditorSDK,
   assetURI = '/icons/florals'
 ) {
-  // Ensure the base URL is absolute
+  // Build a safe base URL and avoid generating "undefined" in client URLs.
+  const hostname = process.env.NEXT_PUBLIC_URL_HOSTNAME ?? '';
+  const publicUrl = process.env.NEXT_PUBLIC_URL ?? '';
+  const baseUrl = `${hostname}${publicUrl}`.replace(/\/$/, '');
+  const normalizedAssetURI = assetURI.replace(/^\//, '');
   const assetPath = assetURI.startsWith('http')
     ? assetURI
-    : `${process.env.NEXT_PUBLIC_URL_HOSTNAME}${process.env.NEXT_PUBLIC_URL}/${assetURI}`;
+    : `${baseUrl}/${normalizedAssetURI}`;
 
   // Add each floral asset to the existing sticker source
   for (let i = 1; i <= 10; i++) {

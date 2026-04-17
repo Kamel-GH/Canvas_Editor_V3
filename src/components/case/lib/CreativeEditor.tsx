@@ -1,7 +1,7 @@
 'use client';
 
 import CreativeEditorSDK, { Configuration } from '@cesdk/cesdk-js';
-import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import { useEffect, useRef } from 'react';
 
 interface CreativeEditorProps extends React.HTMLAttributes<HTMLDivElement> {
   config?: Partial<Configuration>;
@@ -15,16 +15,16 @@ export default function CreativeEditor({
   onInstanceChange = undefined,
   ...rest
 }: CreativeEditorProps) {
-  const containerRef = useRef(null);
+  const containerRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
     if (!containerRef.current) return;
 
-    let container = containerRef.current;
+    const container = containerRef.current;
     let instance: CreativeEditorSDK | null = null;
     let cancelled = false;
-    CreativeEditorSDK.create(container, config ?? {}).then(
-      async (_instance) => {
+    CreativeEditorSDK.create(container, config ?? {})
+      .then(async (_instance) => {
         if (cancelled) {
           _instance.dispose();
           return;
@@ -37,8 +37,13 @@ export default function CreativeEditor({
         if (onInstanceChange) {
           onInstanceChange(instance);
         }
-      }
-    );
+      })
+      .catch((error) => {
+        console.error('CreativeEditorSDK.create failed', error);
+        if (onInstanceChange) {
+          onInstanceChange(undefined);
+        }
+      });
 
     return () => {
       cancelled = true;
@@ -48,15 +53,7 @@ export default function CreativeEditor({
         onInstanceChange(undefined);
       }
     };
-  }, [containerRef, config, configure, onInstanceChange]);
+  }, [config, configure, onInstanceChange]);
 
-  return <div ref={containerRef} {...rest}></div>;
+  return <div ref={containerRef} {...rest} />;
 }
-
-// These typed hooks allow for autocomplete inside jsx files
-export const useConfig = useMemo<Partial<Configuration>>;
-export const useConfigure = useCallback<
-  (instance: CreativeEditorSDK) => Promise<void>
->;
-export const useCreativeEditor = useState<CreativeEditorSDK | undefined>;
-export const useCreativeEditorRef = useRef<CreativeEditorSDK | undefined>;
