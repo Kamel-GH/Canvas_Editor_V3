@@ -38,3 +38,4 @@ Le projet `canvaeditor` est explicitement exclu.
 - `npm run build`
 - `npm run lint`
 - `npm run typecheck`
+
