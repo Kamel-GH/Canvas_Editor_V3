@@ -1,5 +1,5 @@
 /**
- * Design Editor Plugin - Complete Design Editing Configuration for CE.SDK
+ * Editor Shell Plugin - Complete editing configuration for the shell
  *
  * This plugin provides a production-ready design editor configuration with
  * templates, elements, asset libraries, and comprehensive editing capabilities.
@@ -21,14 +21,11 @@
 import type { EditorPlugin, EditorPluginContext } from '@cesdk/cesdk-js';
 import CreativeEditorSDK from '@cesdk/cesdk-js';
 
-import { setupActions } from './actions';
-import { setupFeatures } from './features';
-import { setupTranslations } from './i18n';
-import { setupSettings } from './settings';
-import { setupUI } from './ui';
+import { editorManifest as editorShellManifest } from '../editor/manifest';
+import { configureEditorShell } from '../editor/configureShell';
 
 /**
- * Design Editor configuration plugin.
+ * Editor shell configuration plugin.
  *
  * Provides a complete design editing experience optimized for creating
  * graphics, templates, marketing materials, and multi-page documents.
@@ -48,56 +45,20 @@ export class DesignEditorConfig implements EditorPlugin {
   version = CreativeEditorSDK.version;
 
   /**
-   * Initialize the design editor configuration.
+   * Initialize the editor shell configuration.
    *
    * This method is called when the plugin is added to CE.SDK via addPlugin().
-   * It sets up all features, UI components, translations, and settings.
+   * It sets up shell features, UI components, translations, and settings.
    *
    * @param ctx - The editor plugin context containing cesdk and engine instances
    */
   async initialize({ cesdk, engine }: EditorPluginContext) {
     if (cesdk) {
-      // #region Editor Reset
-      // Reset editor to clear any previous configuration
-      // This ensures a clean slate when applying the design editor config
-      cesdk.resetEditor();
-      // #endregion
-
-      // #region Feature Configuration
-      // Configure which features are available in the editor
-      // See features.ts for all available feature options
-      setupFeatures(cesdk);
-      // #endregion
-
-      // #region UI Configuration
-      // Configure the UI layout (navigation bar, dock, inspector, canvas, panels)
-      // See ui/ folder for all UI configuration options
-      setupUI(cesdk);
-      // #endregion
-
-      // #region Actions Configuration
-      // Configure export, save, and share actions
-      // See actions.ts for action configuration
-      setupActions(cesdk);
-      // #endregion
-
-      // #region Translation Configuration
-      // Set custom translations and labels for the UI
-      // See i18n.ts for translation configuration
-      setupTranslations(cesdk);
-      // #endregion
-
-      // #region Engine Settings
-      // Configure engine settings (interactions, colors, snapping, etc.)
-      // See settings.ts for all available settings
-      setupSettings(engine);
-      // #endregion
-
-      // Re-applies deprecated configuration options (e.g. callbacks,
-      // ui.elements.*, locale, i18n) that were cleared by resetEditor() above.
-      // If you have already migrated to the respective API calls, you can
-      // safely remove this line.
-      cesdk.reapplyLegacyUserConfiguration();
+      configureEditorShell({
+        cesdk,
+        engine,
+        manifest: editorShellManifest
+      });
     }
   }
 }

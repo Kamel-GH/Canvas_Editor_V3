@@ -1,3 +1,15 @@
+import { createRequire } from "node:module";
+
+const require = createRequire(import.meta.url);
+
+let withSentryConfig = (config) => config;
+
+try {
+  ({ withSentryConfig } = require("@sentry/nextjs"));
+} catch {
+  withSentryConfig = (config) => config;
+}
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   webpack(config, { webpack }) {
@@ -28,4 +40,18 @@ const nextConfig = {
   }
 };
 
-export default nextConfig;
+const sentryWebpackPluginOptions = {
+  silent: true,
+  widenClientFileUpload: true,
+  hideSourceMaps: true,
+  disableLogger: true,
+  ...(process.env.SENTRY_ORG && process.env.SENTRY_PROJECT
+    ? {
+        org: process.env.SENTRY_ORG,
+        project: process.env.SENTRY_PROJECT,
+        authToken: process.env.SENTRY_AUTH_TOKEN,
+      }
+    : {}),
+};
+
+export default withSentryConfig(nextConfig, sentryWebpackPluginOptions);

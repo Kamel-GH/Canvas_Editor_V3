@@ -1,5 +1,5 @@
-import classNames from 'classnames';
-import styles from './SegmentedControl.module.css';
+import { clsx } from "clsx";
+import styles from "./SegmentedControl.module.css";
 
 interface IOption {
   label: string;
@@ -12,7 +12,7 @@ interface ISegmentedControl {
   label?: string;
   value: string;
   buttonStyle: React.CSSProperties;
-  size: 'sm' | 'md';
+  size: "sm" | "md";
   disabled?: boolean;
   onChange: (value: string) => void;
 }
@@ -24,8 +24,8 @@ const SegmentedControl = ({
   label,
   buttonStyle,
   onChange,
-  size = 'sm',
-  disabled = false
+  size = "sm",
+  disabled = false,
 }: ISegmentedControl) => {
   const getId = (option: IOption) => name + option.value;
 
@@ -39,12 +39,12 @@ const SegmentedControl = ({
             <button
               key={getId(option)}
               style={buttonStyle}
-              className={classNames(
+              className={clsx(
                 styles.labelWrapper,
-                styles['labelWrapper--' + size],
+                styles["labelWrapper--" + size],
                 {
-                  [styles.labelWrapperActive]: isActive
-                }
+                  [styles.labelWrapperActive]: isActive,
+                },
               )}
               disabled={option.disabled ?? disabled}
               onClick={() => !isActive && onChange(option.value)}

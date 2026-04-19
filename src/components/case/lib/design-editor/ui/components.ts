@@ -36,6 +36,10 @@
 
 import type CreativeEditorSDK from '@cesdk/cesdk-js';
 
+import type { EditorManifest } from '../../editor/types';
+import type { EditorActionController } from '../../editor';
+import { createShellComponentCommands } from './commands';
+
 export const SHELL_CLOSE_COMPONENT_ID = 'canvas-editor.close.navigationBar';
 export const SHELL_DOCUMENT_COMPONENT_ID =
   'canvas-editor.document.navigationBar';
@@ -44,20 +48,55 @@ export const SHELL_VARIABLES_DOCK_COMPONENT_ID =
   'canvas-editor.variables.dock';
 export const SHELL_VARIABLES_PANEL_ID = 'canvas-editor.variables.panel';
 
-function clearSelection(cesdk: CreativeEditorSDK): void {
-  cesdk.engine.block.findAllSelected().forEach((blockId) => {
-    cesdk.engine.block.setSelected(blockId, false);
-  });
-}
+type ShellTranslations = EditorManifest['behavior']['translations']['en'];
+type RegisterComponentHandler = Parameters<
+  CreativeEditorSDK['ui']['registerComponent']
+>[1];
+type RegisterComponentContext = Parameters<RegisterComponentHandler>[0];
+type RegisterComponentBuilder = RegisterComponentContext['builder'];
 
-function toggleVariablesPanel(cesdk: CreativeEditorSDK): void {
-  if (cesdk.ui.isPanelOpen(SHELL_VARIABLES_PANEL_ID)) {
-    cesdk.ui.closePanel(SHELL_VARIABLES_PANEL_ID);
-    return;
-  }
+type ShellCopy = {
+  close: string;
+  document: string;
+  save: string;
+  variablesTitle: string;
+  variablesDescription: string;
+  variablesEmpty: string;
+};
 
-  cesdk.ui.closePanel('*assetLibrary*');
-  cesdk.ui.openPanel(SHELL_VARIABLES_PANEL_ID);
+type ShellCopyKey = keyof ShellCopy;
+
+const shellCopyMap: Record<ShellCopyKey, string> = {
+  close: 'component.button.close',
+  document: 'component.button.document',
+  save: 'component.button.save',
+  variablesTitle: 'component.panel.variables.title',
+  variablesDescription: 'component.panel.variables.description',
+  variablesEmpty: 'component.panel.variables.empty'
+};
+
+type ShellComponentRegistration = {
+  id: string;
+  register: (
+    builder: RegisterComponentBuilder,
+    commands: ReturnType<typeof createShellComponentCommands>,
+    copy: ShellCopy
+  ) => void;
+};
+
+function resolveShellCopy(translations: ShellTranslations): ShellCopy {
+  return {
+    close: translations[shellCopyMap.close] ?? 'Close',
+    document: translations[shellCopyMap.document] ?? 'Document',
+    save: translations[shellCopyMap.save] ?? 'Save',
+    variablesTitle: translations[shellCopyMap.variablesTitle] ?? 'Variables',
+    variablesDescription:
+      translations[shellCopyMap.variablesDescription] ??
+      'Connect template fields to your data model.',
+    variablesEmpty:
+      translations[shellCopyMap.variablesEmpty] ??
+      'No variables are configured for this document.'
+  };
 }
 
 /**
@@ -65,83 +104,87 @@ function toggleVariablesPanel(cesdk: CreativeEditorSDK): void {
  *
  * @param cesdk - The CreativeEditorSDK instance to configure
  */
-export function setupComponents(cesdk: CreativeEditorSDK): void {
-  cesdk.ui.registerComponent(SHELL_CLOSE_COMPONENT_ID, ({ builder }) => {
-    builder.Button('close-editor', {
-      label: 'Close',
-      variant: 'plain',
-      onClick: () => {
-        if (typeof window !== 'undefined' && window.history.length > 1) {
-          window.history.back();
-          return;
-        }
+export function setupComponents(
+  cesdk: CreativeEditorSDK,
+  translations: ShellTranslations,
+  editorActions?: EditorActionController
+): void {
+  const commands = createShellComponentCommands(cesdk, editorActions);
+  const copy = resolveShellCopy(translations);
 
-        cesdk.ui.showNotification('Close action is not wired to an app route yet.');
+  const registrations: readonly ShellComponentRegistration[] = [
+    {
+      id: SHELL_CLOSE_COMPONENT_ID,
+      register(builder, shellCommands, shellCopy): void {
+        builder.Button('close-editor', {
+          label: shellCopy.close,
+          variant: 'plain',
+          onClick: shellCommands.closeEditor
+        });
       }
-    });
-  });
+    },
+    {
+      id: SHELL_DOCUMENT_COMPONENT_ID,
+      register(builder, shellCommands, shellCopy): void {
+        const isDocumentMode = shellCommands.isDocumentMode();
 
-  cesdk.ui.registerComponent(
-    SHELL_DOCUMENT_COMPONENT_ID,
-    ({ builder, engine }) => {
-      const isDocumentMode = engine.block.findAllSelected().length === 0;
-
-      builder.Button('document-mode', {
-        label: 'Document',
-        variant: isDocumentMode ? 'regular' : 'plain',
-        isSelected: isDocumentMode,
-        onClick: () => {
-          clearSelection(cesdk);
-          cesdk.ui.openPanel('//ly.img.panel/inspector');
-        }
-      });
-    }
-  );
-
-  cesdk.ui.registerComponent(SHELL_SAVE_COMPONENT_ID, ({ builder }) => {
-    builder.Button('save-scene', {
-      label: 'Save',
-      color: 'accent',
-      variant: 'regular',
-      onClick: () => {
-        void cesdk.actions.run('saveScene');
+        builder.Button('document-mode', {
+          label: shellCopy.document,
+          variant: isDocumentMode ? 'regular' : 'plain',
+          isSelected: isDocumentMode,
+          onClick: shellCommands.openDocumentPanel
+        });
       }
-    });
-  });
+    },
+    {
+      id: SHELL_SAVE_COMPONENT_ID,
+      register(builder, shellCommands, shellCopy): void {
+        builder.Button('save-scene', {
+          label: shellCopy.save,
+          color: 'accent',
+          variant: 'regular',
+          onClick: () => {
+            void shellCommands.saveDocument();
+          }
+        });
+      }
+    },
+    {
+      id: SHELL_VARIABLES_DOCK_COMPONENT_ID,
+      register(builder, shellCommands, shellCopy): void {
+        const isVariablesPanelOpen = shellCommands.isVariablesPanelOpen();
 
-  cesdk.ui.registerComponent(
-    SHELL_VARIABLES_DOCK_COMPONENT_ID,
-    ({ builder }) => {
-      const isVariablesPanelOpen = cesdk.ui.isPanelOpen(SHELL_VARIABLES_PANEL_ID);
-
-      builder.Button('variables-dock', {
-        label: 'Variables',
-        icon: '@imgly/Library',
-        variant: isVariablesPanelOpen ? 'regular' : 'plain',
-        isSelected: isVariablesPanelOpen,
-        onClick: () => {
-          toggleVariablesPanel(cesdk);
-        }
-      });
+        builder.Button('variables-dock', {
+          label: shellCopy.variablesTitle,
+          icon: '@imgly/Library',
+          variant: isVariablesPanelOpen ? 'regular' : 'plain',
+          isSelected: isVariablesPanelOpen,
+          onClick: shellCommands.toggleVariablesPanel
+        });
+      }
     }
-  );
+  ];
+
+  for (const registration of registrations) {
+    cesdk.ui.registerComponent(registration.id, ({ builder }) => {
+      registration.register(builder, commands, copy);
+    });
+  }
 
   cesdk.ui.registerPanel(SHELL_VARIABLES_PANEL_ID, ({ builder }) => {
     builder.Section('variables-shell', {
-      title: 'Variables',
+      title: copy.variablesTitle,
       scrollable: true,
       children: () => {
         builder.Heading('variables-shell-heading', {
-          content: 'Binding shell placeholder'
+          content: copy.variablesTitle
         });
         builder.Text('variables-shell-copy', {
-          content:
-            'This panel reserves the variables and binding surface required by the project framing.'
+          content: copy.variablesDescription
         });
         builder.Separator('variables-shell-separator');
         builder.Text('variables-shell-next-step', {
-          content:
-            'Phase 1 keeps this surface structural only. Real text and image bindings land in Phase 6.'
+          content: copy.variablesEmpty
         });
       }
     });

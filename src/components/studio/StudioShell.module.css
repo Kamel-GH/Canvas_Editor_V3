@@ -1,0 +1,1188 @@
+.shell {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 74px 320px minmax(0, 1fr) 352px;
+  grid-template-rows: 72px minmax(0, 1fr);
+  gap: 0;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at top left, rgba(255, 193, 92, 0.12), transparent 28%),
+    radial-gradient(circle at top right, rgba(98, 149, 255, 0.1), transparent 22%),
+    linear-gradient(180deg, #0d1117 0%, #111722 100%);
+  color: hsl(0 0% 98%);
+}
+
+.topBar {
+  grid-column: 1 / -1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 0 18px 0 16px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(7, 10, 16, 0.88);
+  backdrop-filter: blur(14px);
+}
+
+.brandBlock {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+}
+
+.brandMark {
+  width: 36px;
+  height: 36px;
+  display: grid;
+  place-items: center;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #f2b84b, #ed8f4e);
+  color: #141414;
+  font-size: 0.8rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+}
+
+.brandName {
+  font-size: 1rem;
+  font-weight: 800;
+  line-height: 1.05;
+}
+
+.brandMeta {
+  color: rgba(255, 255, 255, 0.56);
+  font-size: 0.78rem;
+}
+
+.documentBlock {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+}
+
+.documentBackButton,
+.secondaryAction,
+.primaryAction,
+.iconButton,
+.avatarButton,
+.sideHeaderButton,
+.railButton,
+.railUtilityButton,
+.tabButton,
+.chip,
+.pageThumb,
+.objectRow,
+.objectMoveButton,
+.layerActionButton,
+.layerMoveButton,
+.segmentButton,
+.quickAction,
+.contextMenuItem {
+  border: 0;
+  outline: 0;
+  cursor: pointer;
+  font: inherit;
+}
+
+.documentBackButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 14px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.06);
+  color: rgba(255, 255, 255, 0.88);
+}
+
+.documentInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.documentLabel {
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 0.75rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.modePill {
+  padding: 8px 12px;
+  border-radius: 999px;
+  background: rgba(242, 184, 75, 0.14);
+  color: #f6c86b;
+  font-size: 0.78rem;
+  font-weight: 700;
+}
+
+.topActions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.secondaryAction,
+.primaryAction,
+.iconButton,
+.avatarButton,
+.sideHeaderButton,
+.railUtilityButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition:
+    transform 160ms ease,
+    background-color 160ms ease,
+    border-color 160ms ease;
+}
+
+.secondaryAction,
+.iconButton,
+.avatarButton,
+.sideHeaderButton,
+.railUtilityButton {
+  background: rgba(255, 255, 255, 0.05);
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.secondaryAction {
+  padding: 10px 14px;
+  border-radius: 14px;
+}
+
+.primaryAction {
+  padding: 10px 16px;
+  border-radius: 14px;
+  background: linear-gradient(135deg, #f5bf5c, #f2a54a);
+  color: #121212;
+  font-weight: 800;
+}
+
+.iconButton,
+.avatarButton,
+.sideHeaderButton,
+.railUtilityButton {
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+}
+
+.iconButton:hover,
+.avatarButton:hover,
+.sideHeaderButton:hover,
+.railUtilityButton:hover,
+.secondaryAction:hover,
+.primaryAction:hover,
+.railButton:hover,
+.tabButton:hover,
+.chip:hover,
+.pageThumb:hover,
+.objectRow:hover,
+.objectMoveButton:hover,
+.layerActionButton:hover,
+.layerMoveButton:hover,
+.segmentButton:hover,
+.quickAction:hover,
+.contextMenuItem:hover {
+  transform: translateY(-1px);
+}
+
+.leftRail {
+  grid-column: 1;
+  grid-row: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 14px 12px;
+  border-right: 1px solid rgba(255, 255, 255, 0.07);
+  background: rgba(7, 10, 16, 0.68);
+}
+
+.railGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.railButton {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  padding: 12px 8px 10px;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.04);
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 0.68rem;
+  font-weight: 700;
+}
+
+.railButtonActive {
+  background: linear-gradient(180deg, rgba(242, 184, 75, 0.24), rgba(242, 184, 75, 0.12));
+  color: #f7c86d;
+  box-shadow: inset 0 0 0 1px rgba(242, 184, 75, 0.28);
+}
+
+.railFooter {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.leftPanel {
+  grid-column: 2;
+  grid-row: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 18px 16px;
+  border-right: 1px solid rgba(255, 255, 255, 0.07);
+  background: rgba(10, 14, 22, 0.82);
+  overflow: hidden;
+}
+
+.rightPanel {
+  grid-column: 4;
+  grid-row: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 18px 16px;
+  border-left: 1px solid rgba(255, 255, 255, 0.07);
+  background: rgba(10, 14, 22, 0.82);
+  overflow: hidden;
+}
+
+.sideHeader {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.sideTitle {
+  font-size: 1rem;
+  font-weight: 800;
+}
+
+.sideSubtitle {
+  color: rgba(255, 255, 255, 0.52);
+  font-size: 0.82rem;
+}
+
+.tabRow {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.tabButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  justify-content: flex-start;
+  padding: 10px 12px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.05);
+  color: rgba(255, 255, 255, 0.82);
+  font-weight: 700;
+}
+
+.tabButtonActive {
+  background: rgba(242, 184, 75, 0.18);
+  color: #f6c86b;
+  box-shadow: inset 0 0 0 1px rgba(242, 184, 75, 0.22);
+}
+
+.sideBody,
+.inspectorBody {
+  min-height: 0;
+  overflow: auto;
+  padding-right: 2px;
+}
+
+.stack {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.cardSection,
+.inspectorSection,
+.inspectorSummary {
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.04);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.05);
+}
+
+.cardSection,
+.inspectorSection {
+  padding: 14px;
+}
+
+.emojiTools {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.emojiPickerShell {
+  overflow: hidden;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.96);
+}
+
+.svgInput {
+  width: 100%;
+  padding: 12px;
+  border-radius: 14px;
+  border: 1px dashed rgba(255, 255, 255, 0.16);
+  background: rgba(255, 255, 255, 0.04);
+  color: rgba(255, 255, 255, 0.72);
+}
+
+.helperText {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.56);
+  font-size: 0.8rem;
+  line-height: 1.45;
+}
+
+.sectionHeader {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.sectionHeader h2,
+.sectionHeader h3 {
+  margin: 0;
+  font-size: 0.96rem;
+  font-weight: 800;
+}
+
+.sectionHeader span {
+  color: rgba(255, 255, 255, 0.52);
+  font-size: 0.78rem;
+  text-align: right;
+}
+
+.chipGrid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.chip {
+  padding: 9px 11px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.06);
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 0.82rem;
+}
+
+.pageThumb {
+  display: grid;
+  grid-template-columns: 40px minmax(0, 1fr);
+  gap: 12px;
+  align-items: center;
+  padding: 10px;
+  border-radius: 18px;
+  text-align: left;
+  background: rgba(255, 255, 255, 0.05);
+  color: inherit;
+}
+
+.pageThumbActive {
+  background: rgba(242, 184, 75, 0.16);
+  box-shadow: inset 0 0 0 1px rgba(242, 184, 75, 0.2);
+}
+
+.pageThumbIndex {
+  height: 40px;
+  display: grid;
+  place-items: center;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.06);
+  color: rgba(255, 255, 255, 0.58);
+  font-size: 0.74rem;
+  font-weight: 800;
+}
+
+.pageThumbCanvas {
+  position: relative;
+  height: 92px;
+  border-radius: 16px;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.2)),
+    linear-gradient(180deg, #f2f2f2, #dfdfdf);
+  overflow: hidden;
+}
+
+.pageThumbBar,
+.pageThumbLine,
+.pageThumbLineShort {
+  position: absolute;
+  left: 12px;
+  right: 12px;
+  border-radius: 999px;
+  background: rgba(17, 24, 39, 0.13);
+}
+
+.pageThumbBar {
+  top: 12px;
+  height: 10px;
+  width: 44%;
+}
+
+.pageThumbLine {
+  top: 34px;
+  height: 8px;
+}
+
+.pageThumbLineShort {
+  top: 54px;
+  height: 8px;
+  width: 72%;
+}
+
+.pageThumbMeta {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.pageThumbMeta strong {
+  font-size: 0.92rem;
+}
+
+.pageThumbMeta span {
+  color: rgba(255, 255, 255, 0.56);
+  font-size: 0.78rem;
+}
+
+.objectList,
+.layerList {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.objectRow {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  padding: 11px 12px;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.05);
+  color: inherit;
+  text-align: left;
+}
+
+.objectRowActions {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.objectMoveButton,
+.layerMoveButton {
+  width: 28px;
+  height: 28px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.06);
+  color: rgba(255, 255, 255, 0.86);
+}
+
+.objectRowActive {
+  background: rgba(242, 184, 75, 0.16);
+  box-shadow: inset 0 0 0 1px rgba(242, 184, 75, 0.22);
+}
+
+.objectBadge {
+  flex: none;
+  padding: 4px 8px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.08);
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.7rem;
+  font-weight: 800;
+}
+
+.objectRowText {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.objectRowText strong {
+  font-size: 0.9rem;
+}
+
+.objectRowText span {
+  color: rgba(255, 255, 255, 0.56);
+  font-size: 0.78rem;
+}
+
+.layerRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 11px 12px;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.layerIdentity {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.layerIdentity strong {
+  font-size: 0.9rem;
+}
+
+.layerActions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.layerActionButton {
+  padding: 8px 10px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.06);
+  color: rgba(255, 255, 255, 0.72);
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+.layerActionButtonActive {
+  background: rgba(242, 184, 75, 0.16);
+  color: #f6c86b;
+}
+
+.layerStates {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 2px;
+  color: rgba(255, 255, 255, 0.56);
+  font-size: 0.75rem;
+}
+
+.inspectorSummary {
+  padding: 14px;
+}
+
+.inspectorKicker {
+  color: #f6c86b;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.inspectorSummary h2 {
+  margin: 8px 0 6px;
+  font-size: 1.15rem;
+}
+
+.inspectorSummary p {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.66);
+  font-size: 0.84rem;
+  line-height: 1.45;
+}
+
+.fieldStack {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.inspectorMetaRow {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.inspectorMetaItem {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 12px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.inspectorMetaItem strong {
+  font-size: 0.92rem;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.fieldLabel {
+  color: rgba(255, 255, 255, 0.58);
+  font-size: 0.74rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.fieldInput,
+.fieldTextarea {
+  width: 100%;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.05);
+  color: #fff;
+  font: inherit;
+  outline: none;
+}
+
+.fieldInput {
+  padding: 10px 12px;
+}
+
+.fieldTextarea {
+  min-height: 92px;
+  padding: 10px 12px;
+  resize: vertical;
+}
+
+.fieldInput:focus,
+.fieldTextarea:focus {
+  border-color: rgba(242, 184, 75, 0.55);
+  box-shadow: 0 0 0 3px rgba(242, 184, 75, 0.12);
+}
+
+.fieldColor {
+  width: 72px;
+  height: 40px;
+  padding: 3px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.segmentedRow {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.segmentButton {
+  padding: 10px 12px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.05);
+  color: rgba(255, 255, 255, 0.82);
+  font-size: 0.82rem;
+  font-weight: 700;
+}
+
+.segmentButtonActive {
+  background: rgba(242, 184, 75, 0.16);
+  color: #f6c86b;
+  box-shadow: inset 0 0 0 1px rgba(242, 184, 75, 0.22);
+}
+
+.geometryGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.propertyGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.propertyCard {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 12px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.propertyCard span {
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 0.74rem;
+  text-transform: uppercase;
+}
+
+.propertyCard strong {
+  font-size: 0.9rem;
+}
+
+.quickActionGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.quickAction {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  justify-content: flex-start;
+  padding: 10px 12px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.05);
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.workspace {
+  grid-column: 3;
+  grid-row: 2;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 18px 20px;
+  min-width: 0;
+  overflow: hidden;
+}
+
+.workspaceHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.workspaceMeta,
+.workspaceStatus {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: rgba(255, 255, 255, 0.72);
+  font-size: 0.82rem;
+}
+
+.workspaceMeta strong,
+.workspaceStatus span:last-child {
+  color: #fff;
+}
+
+.canvasShell {
+  position: relative;
+  flex: 1 1 auto;
+  min-height: 0;
+  border-radius: 28px;
+  background:
+    radial-gradient(circle at top, rgba(255, 255, 255, 0.03), transparent 45%),
+    linear-gradient(180deg, rgba(14, 18, 27, 0.9), rgba(11, 15, 23, 0.98));
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.05),
+    0 30px 60px rgba(0, 0, 0, 0.32);
+  overflow: hidden;
+}
+
+.rulerTop,
+.rulerLeft {
+  position: absolute;
+  color: rgba(255, 255, 255, 0.35);
+  font-size: 0.68rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.rulerTop {
+  top: 16px;
+  left: 142px;
+  right: 150px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.rulerLeft {
+  top: 76px;
+  left: 20px;
+  bottom: 82px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.canvasStage {
+  position: absolute;
+  inset: 36px 24px 92px 54px;
+  display: grid;
+  place-items: center;
+  border-radius: 24px;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0.01)),
+    repeating-linear-gradient(
+      0deg,
+      rgba(255, 255, 255, 0.025),
+      rgba(255, 255, 255, 0.025) 1px,
+      transparent 1px,
+      transparent 38px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0.025),
+      rgba(255, 255, 255, 0.025) 1px,
+      transparent 1px,
+      transparent 38px
+    );
+}
+
+.canvasStageNoGrid {
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0.01)),
+    linear-gradient(180deg, rgba(14, 18, 27, 0.9), rgba(11, 15, 23, 0.98));
+}
+
+.pageFrame {
+  width: min(880px, 92%);
+  aspect-ratio: 1 / 1.3;
+  border-radius: 18px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(248, 248, 248, 0.96));
+  box-shadow:
+    0 24px 60px rgba(0, 0, 0, 0.35),
+    0 1px 0 rgba(255, 255, 255, 0.75) inset;
+  overflow: hidden;
+}
+
+.pageHeader {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 16px 18px 0;
+  color: #10131a;
+}
+
+.pageHeader strong {
+  display: block;
+  font-size: 1rem;
+}
+
+.pageHeader span {
+  color: rgba(16, 19, 26, 0.55);
+  font-size: 0.8rem;
+}
+
+.pagePill {
+  padding: 7px 10px;
+  border-radius: 999px;
+  background: rgba(16, 19, 26, 0.06);
+  color: rgba(16, 19, 26, 0.7);
+  font-size: 0.74rem;
+  font-weight: 700;
+}
+
+.pageSurface {
+  position: relative;
+  height: calc(100% - 56px);
+  margin: 12px 18px 18px;
+  border-radius: 16px;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(255, 255, 255, 0.92)),
+    #fff;
+}
+
+.canvasDropOverlay {
+  position: absolute;
+  inset: 0;
+  border-radius: 16px;
+  border: 1px dashed transparent;
+  background: transparent;
+  pointer-events: none;
+  transition:
+    border-color 140ms ease,
+    background-color 140ms ease;
+}
+
+.canvasDropOverlayActive {
+  border-color: rgba(242, 184, 75, 0.55);
+  background: rgba(242, 184, 75, 0.08);
+}
+
+.canvasObject {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-end;
+  padding: 12px;
+  border: 0;
+  border-radius: 16px;
+  text-align: left;
+  user-select: none;
+  touch-action: none;
+  cursor: grab;
+  box-shadow: inset 0 0 0 1px rgba(16, 19, 26, 0.08);
+  transition:
+    transform 180ms ease,
+    box-shadow 180ms ease,
+    border-color 180ms ease;
+}
+
+.canvasObject:hover {
+  transform: translateY(-1px);
+}
+
+.canvasObjectDragging {
+  z-index: 12;
+  cursor: grabbing;
+  box-shadow:
+    inset 0 0 0 1.5px rgba(242, 184, 75, 0.95),
+    0 18px 32px rgba(16, 19, 26, 0.18);
+}
+
+.canvasObjectActive {
+  box-shadow:
+    inset 0 0 0 1.5px rgba(242, 184, 75, 0.85),
+    0 0 0 4px rgba(242, 184, 75, 0.14);
+}
+
+.canvasObjectType {
+  color: rgba(16, 19, 26, 0.54);
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.canvasObjectName {
+  color: #10131a;
+  font-size: 0.9rem;
+  font-weight: 800;
+}
+
+.objectTitle {
+  background: linear-gradient(180deg, #fffef8, #f7f0df);
+  color: #10131a;
+}
+
+.objectImage {
+  background:
+    radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.28), transparent 46%),
+    linear-gradient(180deg, #1e2836, #0f1724);
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+}
+
+.objectImage .canvasObjectType,
+.objectImage .canvasObjectName {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.objectPreset {
+  background:
+    linear-gradient(180deg, rgba(255, 244, 225, 0.98), rgba(255, 247, 234, 0.95));
+  box-shadow:
+    inset 0 0 0 1px rgba(237, 165, 73, 0.24),
+    0 12px 30px rgba(237, 165, 73, 0.08);
+}
+
+.objectTable {
+  background:
+    linear-gradient(180deg, rgba(247, 247, 248, 0.98), rgba(236, 236, 238, 0.96));
+}
+
+.objectGroup {
+  background:
+    linear-gradient(180deg, rgba(248, 251, 255, 0.98), rgba(239, 244, 255, 0.95));
+  border-style: dashed;
+}
+
+.objectCard {
+  background: linear-gradient(180deg, rgba(255, 248, 238, 0.98), rgba(247, 236, 226, 0.95));
+}
+
+.objectEmoji {
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background: linear-gradient(180deg, rgba(255, 245, 224, 0.98), rgba(255, 239, 202, 0.95));
+  font-size: 2rem;
+}
+
+.objectEmoji .canvasObjectType,
+.objectSvg .canvasObjectType {
+  align-self: flex-start;
+}
+
+.objectSvg {
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background: linear-gradient(180deg, rgba(242, 247, 255, 0.98), rgba(227, 236, 255, 0.95));
+}
+
+.objectGeneric {
+  background: rgba(255, 255, 255, 0.94);
+}
+
+.canvasEmoji {
+  display: grid;
+  place-items: center;
+  min-height: 44px;
+  font-size: 2.8rem;
+  line-height: 1;
+}
+
+.canvasEmoji img {
+  width: 2.8rem;
+  height: 2.8rem;
+}
+
+.canvasSvgPreview {
+  width: 100%;
+  height: 100%;
+  max-height: calc(100% - 28px);
+  object-fit: contain;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.64);
+  padding: 8px;
+}
+
+.contextMenu {
+  position: fixed;
+  z-index: 30;
+  width: 220px;
+  padding: 12px;
+  border-radius: 18px;
+  background: rgba(11, 15, 23, 0.98);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 22px 44px rgba(0, 0, 0, 0.4);
+}
+
+.contextMenuHeader {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  margin-bottom: 10px;
+}
+
+.contextMenuHeader strong {
+  font-size: 0.94rem;
+}
+
+.contextMenuHeader span {
+  color: rgba(255, 255, 255, 0.55);
+  font-size: 0.76rem;
+}
+
+.contextMenuItem {
+  width: 100%;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  justify-content: flex-start;
+  margin-top: 4px;
+  padding: 10px 11px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.04);
+  color: rgba(255, 255, 255, 0.9);
+}
+
+@media (max-width: 1480px) {
+  .shell {
+    grid-template-columns: 72px 290px minmax(0, 1fr) 320px;
+  }
+
+  .canvasStage {
+    inset-inline: 18px;
+  }
+}
+
+@media (max-width: 1200px) {
+  .shell {
+    grid-template-columns: 72px minmax(0, 1fr);
+    grid-template-rows: 72px 1fr 1fr;
+  }
+
+  .leftPanel,
+  .rightPanel {
+    grid-row: auto;
+  }
+
+  .workspace {
+    grid-column: 2;
+    grid-row: 2;
+  }
+
+  .leftPanel {
+    grid-column: 2;
+    order: 2;
+  }
+
+  .rightPanel {
+    grid-column: 2;
+    grid-row: 3;
+  }
+
+  .leftRail {
+    grid-row: 2 / span 2;
+  }
+}
+
+@media (max-width: 860px) {
+  .shell {
+    grid-template-columns: 1fr;
+    grid-template-rows: 72px auto auto auto;
+  }
+
+  .topBar,
+  .leftRail,
+  .leftPanel,
+  .workspace,
+  .rightPanel {
+    grid-column: 1;
+  }
+
+  .leftRail {
+    grid-row: 2;
+    flex-direction: row;
+    gap: 10px;
+    overflow-x: auto;
+  }
+
+  .railGroup {
+    flex-direction: row;
+    gap: 8px;
+    overflow-x: auto;
+  }
+
+  .railButton {
+    min-width: 72px;
+  }
+
+  .workspace {
+    grid-row: 3;
+    min-height: 72vh;
+  }
+
+  .leftPanel {
+    grid-row: 4;
+  }
+
+  .rightPanel {
+    grid-row: 5;
+  }
+}

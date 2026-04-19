@@ -7,16 +7,17 @@ Le projet doit repartir du code de reference CE.SDK en React et des references U
 Ordre de lecture recommande:
 
 1. `SOURCE_OF_TRUTH.md`
-2. `EDITOR_AND_BINDING_SPEC.md`
-3. `REFERENCE_ANALYSIS.md`
-4. `TARGET_ARCHITECTURE.md`
-5. `DOMAIN_AND_DATA_MODEL.md`
-6. `IMPLEMENTATION_PHASES.md`
-7. `ACCEPTANCE_CRITERIA.md`
-8. `MIGRATION_EXECUTION_PLAN.md`
-9. `DECISION_LOG.md`
-10. `CODEX_STARTUP_PROMPT.md`
-11. `NEW_PROJECT_BOOTSTRAP.md`
+2. `EDITOR_PRODUCT_SPEC.md`
+3. `EDITOR_AND_BINDING_SPEC.md`
+4. `REFERENCE_ANALYSIS.md`
+5. `TARGET_ARCHITECTURE.md`
+6. `DOMAIN_AND_DATA_MODEL.md`
+7. `IMPLEMENTATION_PHASES.md`
+8. `ACCEPTANCE_CRITERIA.md`
+9. `MIGRATION_EXECUTION_PLAN.md`
+10. `DECISION_LOG.md`
+11. `CODEX_STARTUP_PROMPT.md`
+12. `NEW_PROJECT_BOOTSTRAP.md`
 
 Objectif du pack:
 
@@ -47,6 +48,7 @@ En cas de conflit entre une idee ulterieure, une implementation existante, un ex
 Liste du pack:
 
 - `SOURCE_OF_TRUTH.md`: doctrine, perimetre, priorites, regles d'arbitrage
+- `EDITOR_PRODUCT_SPEC.md`: cahier des charges editoriel et technique de reference
 - `EDITOR_AND_BINDING_SPEC.md`: specification editoriale et binding
 - `REFERENCE_ANALYSIS.md`: synthese des references GitHub, demo et captures
 - `TARGET_ARCHITECTURE.md`: architecture cible du futur projet

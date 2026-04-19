@@ -1,6 +1,6 @@
-import styles from './ValidationPopover.module.css';
-import validationBoxStyles from './ValidationBox.module.css';
-import classNames from 'classnames';
+import styles from "./ValidationPopover.module.css";
+import validationBoxStyles from "./ValidationBox.module.css";
+import { clsx } from "clsx";
 
 interface IValidationPopover {
   validationTitle: string;
@@ -9,7 +9,7 @@ interface IValidationPopover {
 
 const ValidationPopover = ({
   validationTitle,
-  validationDescription
+  validationDescription,
 }: IValidationPopover) => {
   return (
     <div className={styles.content}>
@@ -23,16 +23,16 @@ const ValidationPopover = ({
         <span>Probability:</span>
         <div className="flex items-center space-x-2">
           <span
-            className={classNames(
+            className={clsx(
               validationBoxStyles.checkStatus,
-              validationBoxStyles['checkStatus--failed']
+              validationBoxStyles["checkStatus--failed"],
             )}
           ></span>
           <span>Certain</span>
           <span
-            className={classNames(
+            className={clsx(
               validationBoxStyles.checkStatus,
-              validationBoxStyles['checkStatus--warning']
+              validationBoxStyles["checkStatus--warning"],
             )}
           ></span>
           <span>Likely</span>

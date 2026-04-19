@@ -1,59 +1,57 @@
-'use client';
+"use client";
 
-import CreativeEditorSDK, { Configuration } from '@cesdk/cesdk-js';
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef } from "react";
+
+import type {
+  EditorRuntimeConfig,
+  EditorRuntimeController,
+  EditorShell,
+} from "./editor";
+import { createEditorRuntimeController } from "./editor";
+import { useLatestRef } from "./editor/useLatestRef";
 
 interface CreativeEditorProps extends React.HTMLAttributes<HTMLDivElement> {
-  config?: Partial<Configuration>;
-  configure?: (instance: CreativeEditorSDK) => Promise<void>;
-  onInstanceChange?: (instance: CreativeEditorSDK | undefined) => void;
+  config: EditorRuntimeConfig;
+  onEngineError?: (error: Error) => void;
+  onInstanceChange?: (instance: EditorShell | undefined) => void;
 }
 
 export default function CreativeEditor({
-  config = undefined,
-  configure = undefined,
-  onInstanceChange = undefined,
+  config,
+  onEngineError,
+  onInstanceChange,
   ...rest
 }: CreativeEditorProps) {
   const containerRef = useRef<HTMLDivElement | null>(null);
+  const runtimeRef = useRef<EditorRuntimeController | null>(null);
+  const onEngineErrorRef = useLatestRef(onEngineError);
+  const onInstanceChangeRef = useLatestRef(onInstanceChange);
+
+  if (!runtimeRef.current) {
+    runtimeRef.current = createEditorRuntimeController();
+  }
 
   useEffect(() => {
-    if (!containerRef.current) return;
-
+    const controller = runtimeRef.current;
     const container = containerRef.current;
-    let instance: CreativeEditorSDK | null = null;
-    let cancelled = false;
-    CreativeEditorSDK.create(container, config ?? {})
-      .then(async (_instance) => {
-        if (cancelled) {
-          _instance.dispose();
-          return;
-        }
 
-        instance = _instance;
-        if (configure) {
-          await configure(instance);
-        }
-        if (onInstanceChange) {
-          onInstanceChange(instance);
-        }
-      })
-      .catch((error) => {
-        console.error('CreativeEditorSDK.create failed', error);
-        if (onInstanceChange) {
-          onInstanceChange(undefined);
-        }
-      });
+    if (!controller || !container) return;
+
+    controller.sync({
+      container,
+      config,
+      onEngineError: (error) => onEngineErrorRef.current?.(error),
+      onInstanceChange: (instance) => onInstanceChangeRef.current?.(instance),
+    });
+  }, [config, onEngineErrorRef, onInstanceChangeRef]);
+
+  useEffect(() => {
+    const controller = runtimeRef.current;
 
     return () => {
-      cancelled = true;
-      instance?.dispose();
-      instance = null;
-      if (onInstanceChange) {
-        onInstanceChange(undefined);
-      }
+      controller?.dispose();
     };
-  }, [config, configure, onInstanceChange]);
+  }, []);
 
   return <div ref={containerRef} {...rest} />;
 }

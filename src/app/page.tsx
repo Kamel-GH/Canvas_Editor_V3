@@ -1,13 +1,5 @@
-import { CaseComponentNoSSR } from './CaseComponentNoSSR';
+import { CanevaEditor } from "@/components/caneva/CanevaEditor";
 
 export default function Home() {
-  return (
-    <main className="editor-shell-page">
-      <section className="editor-shell-stage">
-        <div className="editor-shell-canvas">
-          <CaseComponentNoSSR />
-        </div>
-      </section>
-    </main>
-  );
+  return <CanevaEditor />;
 }

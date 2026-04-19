@@ -1,0 +1,142 @@
+npm warn ERESOLVE overriding peer dependency
+npm warn While resolving: eslint-plugin-import@2.32.0
+npm warn Found: eslint@10.2.0
+npm warn node_modules/eslint
+npm warn   peer eslint@"^6.0.0 || ^7.0.0 || >=8.0.0" from @eslint-community/eslint-utils@4.9.1
+npm warn   node_modules/@eslint-community/eslint-utils
+npm warn     @eslint-community/eslint-utils@"^4.9.1" from @typescript-eslint/utils@8.58.2
+npm warn     node_modules/@typescript-eslint/utils
+npm warn     1 more (eslint)
+npm warn   9 more (@typescript-eslint/eslint-plugin, ...)
+npm warn
+npm warn Could not resolve dependency:
+npm warn peer eslint@"^2 || ^3 || ^4 || ^5 || ^6 || ^7.2.0 || ^8 || ^9" from eslint-plugin-import@2.32.0
+npm warn node_modules/eslint-plugin-import
+npm warn   eslint-plugin-import@"^2.32.0" from eslint-config-next@16.2.4
+npm warn   node_modules/eslint-config-next
+npm warn   1 more (eslint-import-resolver-typescript)
+npm warn
+npm warn Conflicting peer dependency: eslint@9.39.4
+npm warn node_modules/eslint
+npm warn   peer eslint@"^2 || ^3 || ^4 || ^5 || ^6 || ^7.2.0 || ^8 || ^9" from eslint-plugin-import@2.32.0
+npm warn   node_modules/eslint-plugin-import
+npm warn     eslint-plugin-import@"^2.32.0" from eslint-config-next@16.2.4
+npm warn     node_modules/eslint-config-next
+npm warn     1 more (eslint-import-resolver-typescript)
+npm warn ERESOLVE overriding peer dependency
+npm warn While resolving: eslint-plugin-jsx-a11y@6.10.2
+npm warn Found: eslint@10.2.0
+npm warn node_modules/eslint
+npm warn   peer eslint@"^6.0.0 || ^7.0.0 || >=8.0.0" from @eslint-community/eslint-utils@4.9.1
+npm warn   node_modules/@eslint-community/eslint-utils
+npm warn     @eslint-community/eslint-utils@"^4.9.1" from @typescript-eslint/utils@8.58.2
+npm warn     node_modules/@typescript-eslint/utils
+npm warn     1 more (eslint)
+npm warn   9 more (@typescript-eslint/eslint-plugin, ...)
+npm warn
+npm warn Could not resolve dependency:
+npm warn peer eslint@"^3 || ^4 || ^5 || ^6 || ^7 || ^8 || ^9" from eslint-plugin-jsx-a11y@6.10.2
+npm warn node_modules/eslint-plugin-jsx-a11y
+npm warn   eslint-plugin-jsx-a11y@"^6.10.0" from eslint-config-next@16.2.4
+npm warn   node_modules/eslint-config-next
+npm warn
+npm warn Conflicting peer dependency: eslint@9.39.4
+npm warn node_modules/eslint
+npm warn   peer eslint@"^3 || ^4 || ^5 || ^6 || ^7 || ^8 || ^9" from eslint-plugin-jsx-a11y@6.10.2
+npm warn   node_modules/eslint-plugin-jsx-a11y
+npm warn     eslint-plugin-jsx-a11y@"^6.10.0" from eslint-config-next@16.2.4
+npm warn     node_modules/eslint-config-next
+npm warn ERESOLVE overriding peer dependency
+npm warn While resolving: eslint-plugin-react@7.37.5
+npm warn Found: eslint@10.2.0
+npm warn node_modules/eslint
+npm warn   peer eslint@"^6.0.0 || ^7.0.0 || >=8.0.0" from @eslint-community/eslint-utils@4.9.1
+npm warn   node_modules/@eslint-community/eslint-utils
+npm warn     @eslint-community/eslint-utils@"^4.9.1" from @typescript-eslint/utils@8.58.2
+npm warn     node_modules/@typescript-eslint/utils
+npm warn     1 more (eslint)
+npm warn   9 more (@typescript-eslint/eslint-plugin, ...)
+npm warn
+npm warn Could not resolve dependency:
+npm warn peer eslint@"^3 || ^4 || ^5 || ^6 || ^7 || ^8 || ^9.7" from eslint-plugin-react@7.37.5
+npm warn node_modules/eslint-plugin-react
+npm warn   eslint-plugin-react@"^7.37.0" from eslint-config-next@16.2.4
+npm warn   node_modules/eslint-config-next
+npm warn
+npm warn Conflicting peer dependency: eslint@9.39.4
+npm warn node_modules/eslint
+npm warn   peer eslint@"^3 || ^4 || ^5 || ^6 || ^7 || ^8 || ^9.7" from eslint-plugin-react@7.37.5
+npm warn   node_modules/eslint-plugin-react
+npm warn     eslint-plugin-react@"^7.37.0" from eslint-config-next@16.2.4
+npm warn     node_modules/eslint-config-next
+npm warn ERESOLVE overriding peer dependency
+npm warn While resolving: eslint-plugin-react-hooks@7.0.1
+npm warn Found: eslint@10.2.0
+npm warn node_modules/eslint
+npm warn   peer eslint@"^6.0.0 || ^7.0.0 || >=8.0.0" from @eslint-community/eslint-utils@4.9.1
+npm warn   node_modules/@eslint-community/eslint-utils
+npm warn     @eslint-community/eslint-utils@"^4.9.1" from @typescript-eslint/utils@8.58.2
+npm warn     node_modules/@typescript-eslint/utils
+npm warn     1 more (eslint)
+npm warn   9 more (@typescript-eslint/eslint-plugin, ...)
+npm warn
+npm warn Could not resolve dependency:
+npm warn peer eslint@"^3.0.0 || ^4.0.0 || ^5.0.0 || ^6.0.0 || ^7.0.0 || ^8.0.0-0 || ^9.0.0" from eslint-plugin-react-hooks@7.0.1
+npm warn node_modules/eslint-plugin-react-hooks
+npm warn   eslint-plugin-react-hooks@"^7.0.0" from eslint-config-next@16.2.4
+npm warn   node_modules/eslint-config-next
+npm warn
+npm warn Conflicting peer dependency: eslint@9.39.4
+npm warn node_modules/eslint
+npm warn   peer eslint@"^3.0.0 || ^4.0.0 || ^5.0.0 || ^6.0.0 || ^7.0.0 || ^8.0.0-0 || ^9.0.0" from eslint-plugin-react-hooks@7.0.1
+npm warn   node_modules/eslint-plugin-react-hooks
+npm warn     eslint-plugin-react-hooks@"^7.0.0" from eslint-config-next@16.2.4
+npm warn     node_modules/eslint-config-next
+npm error code ERESOLVE
+npm error ERESOLVE could not resolve
+npm error
+npm error While resolving: react-slider@2.0.6
+npm error Found: react@19.2.0
+npm error node_modules/react
+npm error   peerOptional react@">16" from @cesdk/cesdk-js@1.71.0
+npm error   node_modules/@cesdk/cesdk-js
+npm error     peer @cesdk/cesdk-js@"1.71.0" from @imgly/plugin-ai-apps-web@1.71.0
+npm error     node_modules/@imgly/plugin-ai-apps-web
+npm error       @imgly/plugin-ai-apps-web@"1.71.0" from the root project
+npm error     peer @cesdk/cesdk-js@"1.71.0" from @imgly/plugin-ai-audio-generation-web@1.71.0
+npm error     node_modules/@imgly/plugin-ai-audio-generation-web
+npm error       @imgly/plugin-ai-audio-generation-web@"1.71.0" from the root project
+npm error     10 more (@imgly/plugin-ai-generation-web, ...)
+npm error   peerOptional react@">16" from @cesdk/engine@1.71.0
+npm error   node_modules/@cesdk/engine
+npm error     @cesdk/engine@"1.71.0" from @cesdk/cesdk-js@1.71.0
+npm error     node_modules/@cesdk/cesdk-js
+npm error       peer @cesdk/cesdk-js@"1.71.0" from @imgly/plugin-ai-apps-web@1.71.0
+npm error       node_modules/@imgly/plugin-ai-apps-web
+npm error         @imgly/plugin-ai-apps-web@"1.71.0" from the root project
+npm error       11 more (@imgly/plugin-ai-audio-generation-web, ...)
+npm error     peerOptional @cesdk/engine@"^1.40.0 " from @imgly/idml-importer@1.2.2
+npm error     node_modules/@imgly/idml-importer
+npm error       @imgly/idml-importer@"1.2.2" from the root project
+npm error     2 more (@imgly/psd-importer, the root project)
+npm error   12 more (@radix-ui/react-compose-refs, @radix-ui/react-slot, ...)
+npm error
+npm error Could not resolve dependency:
+npm error peer react@"^16 || ^17 || ^18" from react-slider@2.0.6
+npm error node_modules/react-slider
+npm error   react-slider@"^2.0.6" from the root project
+npm error
+npm error Conflicting peer dependency: react@18.3.1
+npm error node_modules/react
+npm error   peer react@"^16 || ^17 || ^18" from react-slider@2.0.6
+npm error   node_modules/react-slider
+npm error     react-slider@"^2.0.6" from the root project
+npm error
+npm error Fix the upstream dependency conflict, or retry
+npm error this command with --force or --legacy-peer-deps
+npm error to accept an incorrect (and potentially broken) dependency resolution.
+npm error
+npm error
+npm error For a full report see:
+npm error /Users/kamel/.npm/_logs/2026-04-17T22_55_26_538Z-eresolve-report.txt
+npm error A complete log of this run can be found in: /Users/kamel/.npm/_logs/2026-04-17T22_55_26_538Z-debug-0.log

@@ -1,0 +1,63 @@
+.legacyPage {
+  min-height: 100vh;
+  padding: clamp(16px, 2vw, 28px);
+  background:
+    radial-gradient(circle at top left, rgba(255, 255, 255, 0.8), transparent 28%),
+    linear-gradient(180deg, hsl(210 20% 98%), hsl(210 22% 93%));
+}
+
+.legacyStage {
+  min-height: calc(100vh - clamp(32px, 4vw, 56px));
+  padding: clamp(10px, 1.5vw, 18px);
+  border: 1px solid hsl(214 28% 88% / 0.9);
+  border-radius: 28px;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.66)),
+    hsl(210 20% 97%);
+  box-shadow:
+    0 28px 80px rgba(15, 23, 42, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.85);
+}
+
+.legacyCanvas {
+  min-height: calc(100vh - clamp(52px, 7vw, 92px));
+}
+
+.legacyWrapper {
+  position: relative;
+  display: flex;
+  min-height: 100%;
+  overflow: hidden;
+  flex: 1 1 auto;
+  border: 1px solid hsl(214 26% 86%);
+  border-radius: 22px;
+  background: hsl(0 0% 100%);
+  box-shadow:
+    0 18px 50px rgba(15, 23, 42, 0.08),
+    0 2px 6px rgba(15, 23, 42, 0.05);
+}
+
+.legacySurface {
+  position: absolute;
+  inset: 0;
+}
+
+@media (max-width: 768px) {
+  .legacyPage {
+    padding: 10px;
+  }
+
+  .legacyStage {
+    min-height: calc(100vh - 20px);
+    padding: 8px;
+    border-radius: 18px;
+  }
+
+  .legacyCanvas {
+    min-height: calc(100vh - 36px);
+  }
+
+  .legacyWrapper {
+    border-radius: 18px;
+  }
+}

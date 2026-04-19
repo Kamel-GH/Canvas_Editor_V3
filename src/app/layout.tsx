@@ -1,19 +1,17 @@
-import type { Metadata } from 'next';
-import './root.css';
+import type { Metadata } from "next";
+import "./root.css";
 
 export const metadata: Metadata = {
-  title: 'Canvas Editor V3',
-  description: 'CE.SDK editor-first bootstrap for Canvas Editor V3'
+  title: "Caneva Editor",
+  description: "Interface canvas générique avec volet gauche, inspecteur et palettes",
 };
 
 export default function RootLayout({
-  children
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+  children,
+}: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en">
-      <body style={{ minHeight: '100vh' }}>{children}</body>
+    <html lang="fr">
+      <body style={{ minHeight: "100vh" }}>{children}</body>
     </html>
   );
 }

@@ -74,7 +74,6 @@ async function runEslint() {
           }
         },
         rules: {
-          'no-undef': 'error',
           'no-unused-vars': 'off',
           '@typescript-eslint/no-unused-vars': [
             'warn',

@@ -1,10 +1,10 @@
-'use client';
+"use client";
 
-import dynamic from 'next/dynamic';
+export type CaseComponentNoSSRProps = {
+  wrapperClassName?: string;
+  surfaceClassName?: string;
+};
 
-export const CaseComponentNoSSR = dynamic(
-  () => import('../components/case/CaseComponent'),
-  {
-    ssr: false
-  }
-);
+export function CaseComponentNoSSR(_: CaseComponentNoSSRProps) {
+  return null;
+}

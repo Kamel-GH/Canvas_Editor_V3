@@ -6,33 +6,29 @@
 
 import type CreativeEditorSDK from '@cesdk/cesdk-js';
 
-import { setupCanvas } from './canvas';
-import { setupComponents } from './components';
-import { setupDock } from './dock';
-import { setupInspectorBar } from './inspectorBar';
-import { setupNavigationBar } from './navigationBar';
-import { setupPanels } from './panel';
+import type { EditorManifest } from '../../editor/types';
+import type { EditorActionController } from '../../editor';
 
-/**
- * Set up all UI components for the design editor.
- *
- * @param cesdk - The CreativeEditorSDK instance to configure
- */
-export function setupUI(cesdk: CreativeEditorSDK): void {
-  setupPanels(cesdk); // Panel positions first (affects layout)
-  setupComponents(cesdk); // Custom components
-  setupNavigationBar(cesdk); // Top bar
-  setupCanvas(cesdk); // Canvas bar and context menu
-  setupInspectorBar(cesdk); // Contextual toolbar
-  setupDock(cesdk); // Left side asset panel
+import { applyEditorUiManifest } from './applicator';
+import { setupComponents } from './components';
+
+export function setupUI(
+  cesdk: CreativeEditorSDK,
+  manifest: EditorManifest,
+  editorActions?: EditorActionController
+): void {
+  applyEditorUiManifest(cesdk, manifest);
+  setupComponents(cesdk, manifest.behavior.translations.en, editorActions);
 }
 
-// Re-export for selective use
 export {
-  setupCanvas,
-  setupComponents,
-  setupDock,
-  setupInspectorBar,
-  setupNavigationBar,
-  setupPanels
-};
+  applyEditorDockOrder,
+  applyEditorPanelPlacements,
+  applyEditorUiDockApplication,
+  applyEditorUiManifest,
+  applyEditorUiOrderApplication,
+  applyEditorUiOrderApplications,
+  applyEditorUiPanelPlacements
+} from './applicator';
+
+export { setupComponents };
